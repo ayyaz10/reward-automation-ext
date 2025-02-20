@@ -1,0 +1,9 @@
+.my-input {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 5px;
+  border: 1px solid black;
+  background: white;
+  z-index: 1000;
+}

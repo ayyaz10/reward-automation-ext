@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "name": "Reward Automation Extension",
+  "description": "Another productivity tool",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://account.asus.com/*/signup.aspx",
+        "https://account.asus.com/signup.aspx"
+      ],
+      "js": ["rog.js"]
+    },
+    {
+      "matches": [
+        "https://rog.asus.com/*/elite/activity/all",
+        "https://rog.asus.com/elite/activity/all",
+        "https://rog.asus.com/*/elite/reward/all",
+        "https://rog.asus.com/elite/reward/all"
+      ],
+      "js": ["activity.js"]
+    },
+    {
+      "matches": [
+        "https://rog.asus.com/elite*",
+        "https://rog.asus.com/*/elite*"
+      ],
+      "js": ["elite-condition.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://mail.google.com/mail/*"],
+      "js": ["verify-email.js"]
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["keybindings.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://account.asus.com/overview.aspx",
+        "https://account.asus.com/info.aspx",
+        "https://account.asus.com/global/overview.aspx",
+        "https://account.asus.com/global/info.aspx",
+        "https://account.asus.com/*/info.aspx",
+        "https://account.asus.com/*/overview.aspx"
+      ],
+      "js": ["changeCountry.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "alarms",
+    "notifications",
+    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "icons": {
+    "128": "focuslist-logo.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "focuslist-logo.png",
+    "default_title": "Reward Automation"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["focuslist-logo.png"],
+      "matches": ["*://*/*"],
+      "use_dynamic_url": false
+    }
+  ]
+}
