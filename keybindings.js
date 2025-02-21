@@ -1,6 +1,6 @@
 document.addEventListener("keydown", function (event) {
   // Check if the key is from NumPad
-  if (!event.code.startsWith("Numpad")) return;
+  if (!event?.code?.startsWith("Numpad")) return;
 
   switch (event.code) {
     case "Numpad0":
@@ -9,8 +9,8 @@ document.addEventListener("keydown", function (event) {
     case "Numpad1":
       accountSubmit();
       break;
-    case "Numpad7":
-      openElite();
+    case "NumpadDecimal":
+      setBirthday();
       break;
     case "Numpad4":
       giftCard400();
@@ -18,12 +18,28 @@ document.addEventListener("keydown", function (event) {
     case "Numpad2":
       giftCard200();
       break;
+    case "Numpad5":
+      changeCountrySubmit();
+      break;
     case "NumpadAdd":
       openAccountPage();
       break;
+    case "NumpadDivide":
+      copyPassword();
+      break;
+    case "NumpadMultiply":
+      pasteText();
+      break;
+    case "NumpadMultiply":
+      setBirthday();
+      break;
     case "Numpad6":
       // gmail
-      window.open("https://mail.google.com/mail/u/0", "_blank");
+      // window.open("https://mail.google.com/mail/u/0", "_blank");
+      window.location.href = window.location.href.replace(
+        "https://account.asus.com/global/info.aspx",
+        "https://rog.asus.com/kr/elite/"
+      );
 
       break;
     case "Numpad9":
@@ -54,6 +70,11 @@ document.addEventListener("keydown", function (event) {
 });
 
 // Example functions
+
+function setBirthday() {
+  window.sharedBirthFunction.setBirthday();
+}
+
 // 0
 function signup() {
   window.sharedFunctions.signup();
@@ -72,6 +93,13 @@ function accountSubmit() {
   }, 1000);
   console.log("Account Submit triggered");
 }
+
+// change country submit
+function changeCountrySubmit() {
+  const submit = document.querySelector("#ctl00_ContentPlaceHolder1_btnSubmit");
+  submit.click();
+}
+
 // Home
 function openElite() {
   // window.open = ("https://rog.asus.com/elite/", "_blank");
@@ -110,4 +138,27 @@ function openGoogleSheet() {
 function logout() {
   document.querySelector(".Header__logOut__L5y79").click();
   console.log("Logged Out");
+}
+
+function copyPassword() {
+  navigator.clipboard
+    .writeText("T@keItE@$y1")
+    .then(() => {
+      console.log("Password copied to clipboard");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function pasteText() {
+  navigator.clipboard
+    .readText()
+    .then((text) => {
+      passInput.value = text;
+      console.log("Password pasted from clipboard", text);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }

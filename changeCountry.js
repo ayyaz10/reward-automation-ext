@@ -51,6 +51,14 @@ window.onload = () => {
   // countryChange();
 
   function countryChange() {
+    window.alert = function () {};
+    window.confirm = function () {
+      return false;
+    };
+    window.prompt = function () {
+      return null;
+    };
+
     console.log("country change");
     const country = localStorage.getItem("country");
 
@@ -74,9 +82,22 @@ window.onload = () => {
           console.log(err);
         });
       // setTimeout(() => {
-      //   localStorage.setItem("isRedirected", "true");
+      //   // localStorage.setItem("isRedirected", "true");
       //   submit.dispatchEvent(new MouseEvent("click", { bubbles: false }));
-      // }, 4000);
+      //   // setTimeout(() => {
+      //   //   document.dispatchEvent(
+      //   //     new KeyboardEvent("keydown", {
+      //   //       key: "Escape",
+      //   //       code: "Escape",
+      //   //       keyCode: 27,
+      //   //       which: 27,
+      //   //       bubbles: true,
+      //   //     })
+      //   //   );
+      //   //   console.log("Escape pressed");
+      //   // }, 4000);
+      // }, 2000);
+
       localStorage.setItem("hasClicked", "false");
     }
   }

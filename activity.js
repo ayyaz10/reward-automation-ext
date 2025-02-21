@@ -29,6 +29,8 @@ setTimeout(() => {
 
   function openBirthdayModel() {
     const buttonTexts = [
+      "Wszystkiego", // poland
+      "+100", // koria
       "100 PUAN",
       "100 PUNCTE",
       "+100 балів", // ukraine
@@ -130,6 +132,10 @@ setTimeout(() => {
                     "/activity/all",
                     "/reward/all"
                   );
+                  // window.location.href = window.location.href.replace(
+                  //   "/activity/all",
+                  //   "/reward/all"
+                  // );
                 }
               }
             });

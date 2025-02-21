@@ -28,6 +28,9 @@ window.onload = function () {
         pass2.addEventListener("change", window.sharedFunctions.signup);
       });
     }
+    window.sharedBirthFunction = {
+      setBirthday: setBirthday,
+    };
     function setBirthday() {
       const randYear = Math.floor(Math.random() * 25) + 1990;
       let today = new Date();
@@ -111,9 +114,13 @@ window.onload = function () {
     //     window.close();
     //   }, 4000);
     // }
+    // v1
+    // ButtonRedRog__inner__1UTt1
+    // v2
+    // ButtonRedRog__inner__1sgjP
     window.sharedFunctions = {
       signup: () => {
-        const btn = document.querySelectorAll(".ButtonRedRog__inner__1UTt1");
+        const btn = document.querySelectorAll(".ButtonRedRog__inner__1sgjP");
         btn[2].click();
         // setTimeout(() => {
         //   window.location.href = "https://mail.google.com/mail/u/0/#inbox";

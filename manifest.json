@@ -13,6 +13,14 @@
     },
     {
       "matches": [
+        "https://account.asus.com/loginform.aspx*",
+        "https://account.asus.com/*/loginform.aspx*",
+        "https://rog.asus.com/*"
+      ],
+      "js": ["login.js"]
+    },
+    {
+      "matches": [
         "https://rog.asus.com/*/elite/activity/all",
         "https://rog.asus.com/elite/activity/all",
         "https://rog.asus.com/*/elite/reward/all",
@@ -21,10 +29,7 @@
       "js": ["activity.js"]
     },
     {
-      "matches": [
-        "https://rog.asus.com/elite*",
-        "https://rog.asus.com/*/elite*"
-      ],
+      "matches": ["https://rog.asus.com/elite", "https://rog.asus.com/*/elite"],
       "js": ["elite-condition.js"],
       "run_at": "document_idle"
     },
