@@ -61,8 +61,9 @@ chrome.storage.onChanged.addListener((changes, area) => {
   if (area === "sync" && changes.countryChange) {
     if (changes.countryChange.newValue === true) {
       chrome.storage.sync.set({ countryChange: false });
-
-      chrome.tabs.create({ url: "https://rog.asus.com/ph/elite" });
+      setTimeout(() => {
+        chrome.tabs.create({ url: "https://rog.asus.com/elite" });
+      }, 2000);
     }
   }
 });

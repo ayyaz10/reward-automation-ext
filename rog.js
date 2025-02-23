@@ -132,12 +132,12 @@ window.onload = function () {
     setAgreement();
     setBirthday();
   }, 1000);
-  setInterval(() => {
-    console.log("waiting for submit to click");
-    console.log(localStorage.getItem("is_changecountry_completed"));
-    if (localStorage.getItem("is_changecountry_completed") === "true") {
-      localStorage.setItem("is_changecountry_completed", "false");
-      window.open("https://rog.asus.com/ph/elite", "_blank");
-    }
-  }, 2000);
+  // setInterval(() => {
+  //   console.log("waiting for submit to click");
+  //   console.log(localStorage.getItem("is_changecountry_completed"));
+  //   if (localStorage.getItem("is_changecountry_completed") === "true") {
+  //     localStorage.setItem("is_changecountry_completed", "false");
+  //     window.open("https://rog.asus.com/ph/elite", "_blank");
+  //   }
+  // }, 2000);
 };
