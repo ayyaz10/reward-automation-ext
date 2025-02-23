@@ -1,6 +1,6 @@
 document.addEventListener("keydown", function (event) {
   // Check if the key is from NumPad
-  if (!event?.code?.startsWith("Numpad")) return;
+  // if (!event?.code?.startsWith("Numpad")) return;
 
   switch (event.code) {
     case "Numpad0":
@@ -54,6 +54,9 @@ document.addEventListener("keydown", function (event) {
       localStorage.removeItem("hasClicked");
       location.reload(true);
 
+      break;
+    case "PageDown":
+      resetChangeCountryLocalStorage();
       break;
     case "NumpadSubtract":
       logout();
@@ -161,4 +164,8 @@ function pasteText() {
     .catch((err) => {
       console.log(err);
     });
+}
+
+function resetChangeCountryLocalStorage() {
+  localStorage.removeItem("is_changecountry_completed");
 }

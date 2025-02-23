@@ -122,9 +122,9 @@ window.onload = function () {
       signup: () => {
         const btn = document.querySelectorAll(".ButtonRedRog__inner__1sgjP");
         btn[2].click();
-        // setTimeout(() => {
-        //   window.location.href = "https://mail.google.com/mail/u/0/#inbox";
-        // }, 4000);
+        setTimeout(() => {
+          window.open("https://mail.google.com/mail/u/0/#inbox", "_blank");
+        }, 4000);
       },
     };
     setCountry();
@@ -132,4 +132,12 @@ window.onload = function () {
     setAgreement();
     setBirthday();
   }, 1000);
+  setInterval(() => {
+    console.log("waiting for submit to click");
+    console.log(localStorage.getItem("is_changecountry_completed"));
+    if (localStorage.getItem("is_changecountry_completed") === "true") {
+      localStorage.setItem("is_changecountry_completed", "false");
+      window.open("https://rog.asus.com/ph/elite", "_blank");
+    }
+  }, 2000);
 };

@@ -1,7 +1,5 @@
 console.log("elite-condition.js loaded");
 
-console.log(localStorage?.getItem("isConditionSet") === "true");
-localStorage.setItem("isLoggedIn", "true");
 function checkRedirect() {
   console.log("inside if");
   localStorage.setItem("isConditionSet", "false");

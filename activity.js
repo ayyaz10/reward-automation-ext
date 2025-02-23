@@ -29,6 +29,9 @@ setTimeout(() => {
 
   function openBirthdayModel() {
     const buttonTexts = [
+      "Boldog", // hungry
+      "100 bod", // chech republic
+      "Získajte 100 bodov!", // Solovikaia
       "Wszystkiego", // poland
       "+100", // koria
       "100 PUAN",
@@ -125,6 +128,7 @@ setTimeout(() => {
 
                 if (mode === "n2-with-logout" || mode === "as-with-logout") {
                   setTimeout(() => {
+                    localStorage.setItem("reward_collected", "true");
                     logout();
                   }, 2000);
                 } else if (mode === "n2-no-logout" || mode === "as-no-logout") {

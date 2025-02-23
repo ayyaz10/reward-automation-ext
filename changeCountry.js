@@ -1,6 +1,23 @@
-window.onload = () => {
-  console.log("change country");
+if (localStorage.getItem("shouldClose") === "true") {
+  localStorage.setItem("shouldClose", "false");
+  window.close();
+}
 
+window.onload = () => {
+  setTimeout(() => {
+    window.focus();
+    console.log("window focused");
+  }, 2000);
+
+  console.log("change country");
+  navigator.clipboard
+    .writeText("T@keItE@$y1")
+    .then(() => {
+      console.log("Password copied to clipboard");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   function openProfile(accountSet) {
     console.log("inside openProfile");
     if (localStorage.getItem("hasClicked") === "true") return;
@@ -51,13 +68,13 @@ window.onload = () => {
   // countryChange();
 
   function countryChange() {
-    window.alert = function () {};
-    window.confirm = function () {
-      return false;
-    };
-    window.prompt = function () {
-      return null;
-    };
+    // window.alert = function () {};
+    // window.confirm = function () {
+    //   return false;
+    // };
+    // window.prompt = function () {
+    //   return null;
+    // };
 
     console.log("country change");
     const country = localStorage.getItem("country");
@@ -72,15 +89,37 @@ window.onload = () => {
       const passInput = document.querySelector(
         "#ctl00_ContentPlaceHolder1_txtPValue"
       );
+
       navigator.clipboard
         .readText()
         .then((password) => {
           passInput.value = password;
-          console.log("Password pasted from clipboard", password);
+          console.log("Password pasted from clipboard:", password);
+          chrome.storage.sync
+            .set({ countryChange: true })
+            .then(() => {
+              console.log("countryChange set in sync storage.");
+            })
+            .catch((err) => {
+              console.error("Error setting countryChange:", err);
+            });
+          // Check if the password is "see to password" and click submit
+          submit.click();
+          // if (password.trim() === "T@keItE@$y1") {
+          console.log("submit clicked");
+          // chrome.storage.local.set({ isCountryChange: true }, () => {
+          //   console.log("countryChange set to true");
+          // });
+
+          // localStorage.setItem("is_changecountry_completed", "true");
+
+          localStorage.setItem("shouldClose", "true");
+          // }
         })
         .catch((err) => {
           console.log(err);
         });
+
       // setTimeout(() => {
       //   // localStorage.setItem("isRedirected", "true");
       //   submit.dispatchEvent(new MouseEvent("click", { bubbles: false }));

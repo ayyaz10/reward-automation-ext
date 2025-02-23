@@ -56,3 +56,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     });
   }
 });
+chrome.storage.onChanged.addListener((changes, area) => {
+  console.log(changes.countryChange);
+  if (area === "sync" && changes.countryChange) {
+    if (changes.countryChange.newValue === true) {
+      chrome.storage.sync.set({ countryChange: false });
+
+      chrome.tabs.create({ url: "https://rog.asus.com/ph/elite" });
+    }
+  }
+});
