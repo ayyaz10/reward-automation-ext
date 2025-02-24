@@ -29,6 +29,7 @@ setTimeout(() => {
 
   function openBirthdayModel() {
     const buttonTexts = [
+      "100",
       "Boldog", // hungry
       "100 bod", // chech republic
       "Získajte 100 bodov!", // Solovikaia
