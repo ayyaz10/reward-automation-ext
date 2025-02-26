@@ -58,6 +58,9 @@ document.addEventListener("keydown", function (event) {
     case "PageDown":
       resetChangeCountryLocalStorage();
       break;
+    case "PageUp":
+      submitQuiz();
+      break;
     case "NumpadSubtract":
       logout();
       break;
@@ -169,3 +172,18 @@ function pasteText() {
 function resetChangeCountryLocalStorage() {
   localStorage.removeItem("is_changecountry_completed");
 }
+
+function submitQuiz() {
+  window.solveAndCollectQuizShared.solveAndCollectQuiz();
+}
+function submitAccount() {
+  const submitBtn = document.querySelectorAll(".ButtonRedRog__inner__1sgjP");
+  submitBtn[2].click();
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.code === "Backquote") {
+    submitAccount();
+    console.log(event.code);
+  }
+});

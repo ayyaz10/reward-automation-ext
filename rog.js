@@ -25,7 +25,7 @@ window.onload = function () {
         // pass2.dispatchEvent(new Event("input", { bubbles: true }));
         // pass2.dispatchEvent(new Event("change", { bubbles: true }));
         // pass2.dispatchEvent(new Event("blur", { bubbles: true }));
-        pass2.addEventListener("change", window.sharedFunctions.signup);
+        // pass2.addEventListener("change", window.sharedFunctions.signup);
       });
     }
     window.sharedBirthFunction = {

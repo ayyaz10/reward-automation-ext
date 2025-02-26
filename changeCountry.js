@@ -62,7 +62,11 @@ window.onload = () => {
   // as-no-logout
   chrome.storage.sync.get("mode", function (data) {
     console.log(data.mode);
-    if (data.mode === "as-with-logout" || data.mode === "as-no-logout") {
+    if (
+      data.mode === "as-with-logout" ||
+      data.mode === "as-no-logout" ||
+      "n2-quiz-with-logout"
+    ) {
       setTimeout(() => {
         changeBirthday();
         countryChange();

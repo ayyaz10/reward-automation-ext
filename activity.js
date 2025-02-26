@@ -29,7 +29,10 @@ setTimeout(() => {
 
   function openBirthdayModel() {
     const buttonTexts = [
-      "100",
+      "Happy Birthday! Please click 'Submit' to earn 100 points!​",
+      "+100 балів",
+      "100 PUNCTE",
+      "Submit to earn 100 points!",
       "Boldog", // hungry
       "100 bod", // chech republic
       "Získajte 100 bodov!", // Solovikaia
@@ -56,7 +59,9 @@ setTimeout(() => {
       }
     }
   }
-
+  window.solveAndCollectQuizShared = {
+    solveAndCollectQuiz: solveAndCollectQuiz,
+  };
   // to share across contnt scripts
   window.sharedFunctions2 = {
     openBirthdayModel: openBirthdayModel,
@@ -79,6 +84,53 @@ setTimeout(() => {
         console.log("200 points clicked");
       }
     });
+  }
+
+  function solveAndCollectQuiz() {
+    const quizBtns = document.querySelectorAll(".ButtonRed__inner__2GkGv span");
+    console.log(quizBtns);
+    quizBtns.forEach((btn) => {
+      if (btn.textContent.includes("Start Now")) {
+        btn.click();
+        console.log("Opening quiz");
+      }
+    });
+    setTimeout(() => {
+      document
+        .querySelectorAll("p.QuizModal__title__yywvh")
+        .forEach((question) => {
+          let questionText = question.textContent.trim(); // Get question text
+          let answerDiv = question.nextElementSibling; // Get the corresponding answer div
+
+          if (answerDiv) {
+            let options = answerDiv.querySelectorAll(
+              ".QuizModal__optionText__1y9yg"
+            ); // Get all answer options
+
+            if (options.length > 0) {
+              if (
+                questionText.includes(
+                  "ROG Strix graphics cards are designed by NVIDIA only."
+                )
+              ) {
+                // Click second option for question 7
+                options[1]?.click();
+              } else {
+                // Click first option for all other questions
+                options[0]?.click();
+              }
+            }
+          }
+        });
+      setTimeout(() => {
+        const submitBtn = document.querySelector(
+          ".QuizModal__buttonWrapper__3qkjo .ButtonRed__inner__2GkGv span"
+        );
+
+        submitBtn.click();
+        console.log("Submitting quiz");
+      }, 2000);
+    }, 3000);
   }
 
   if (window.location.href.includes("reward")) {
@@ -127,21 +179,30 @@ setTimeout(() => {
               if (closeButton) {
                 // clearInterval(observer3);
 
-                if (mode === "n2-with-logout" || mode === "as-with-logout") {
-                  setTimeout(() => {
-                    localStorage.setItem("reward_collected", "true");
-                    logout();
-                  }, 2000);
+                if (
+                  mode === "n2-with-logout" ||
+                  mode === "as-with-logout" ||
+                  mode === "n2-quiz-with-logout"
+                ) {
+                  if (mode === "n2-quiz-with-logout") {
+                    closeButton.click();
+                    solveAndCollectQuiz();
+                  } else {
+                    setTimeout(() => {
+                      localStorage.setItem("reward_collected", "true");
+                      logout();
+                    }, 4000);
+                  }
                 } else if (mode === "n2-no-logout" || mode === "as-no-logout") {
                   window.location.href = window.location.href.replace(
                     "/activity/all",
                     "/reward/all"
                   );
-                  // window.location.href = window.location.href.replace(
-                  //   "/activity/all",
-                  //   "/reward/all"
-                  // );
                 }
+                // window.location.href = window.location.href.replace(
+                //   "/activity/all",
+                //   "/reward/all"
+                // );
               }
             });
 

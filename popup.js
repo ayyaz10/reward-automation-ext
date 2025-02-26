@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function setCountry() {
     const countryInput = document.querySelector(".set-country");
     console.log(countryInput);
+    chrome.storage.sync.get("country", function (data) {
+      if (data && data.country) {
+        console.log(data.country);
+        countryInput.value = data.country;
+      }
+    });
     countryInput.addEventListener("change", (event) => {
       const selectedCountry = event.target.value;
 
