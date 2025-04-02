@@ -26,6 +26,50 @@ setTimeout(() => {
       // }
     }
   });
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "2") {
+      twitterReward();
+    }
+  });
+  function twitterReward() {
+    const buttons = document.querySelectorAll(".ButtonRed__inner__2GkGv span");
+
+    for (let button of buttons) {
+      console.log(button.innerText);
+      if (button.innerText.toLowerCase().includes("3000 elite points")) {
+        console.log(button, "pressed");
+        button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      }
+    }
+
+    // Copy "ROGELITEREWARDS" to clipboard
+    navigator.clipboard
+      .writeText("ROGELITEREWARDS")
+      .then(() => console.log("ROGELITEREWARDS copied to clipboard"))
+      .catch((err) => console.error("Failed to copy text:", err));
+  }
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "1") {
+      runMyFunction();
+    }
+  });
+
+  function runMyFunction() {
+    console.log("The '1' key was pressed! Running JavaScript...");
+    const buttons = document.querySelectorAll(".ButtonRed__inner__2GkGv span");
+    for (let button of buttons) {
+      console.log(button.innerText);
+      if (
+        button.innerText.toLowerCase().includes("+20 POINTS".toLowerCase())
+        // ||
+        // button.innerText.toLowerCase().includes("+10 POINTS".toLowerCase())
+      ) {
+        console.log(button, "pressed");
+        button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+      }
+    }
+  }
 
   function openBirthdayModel() {
     const buttonTexts = [
@@ -46,49 +90,6 @@ setTimeout(() => {
       "HAPPY BIRTHDAY! PLEASE CLICK 'SUBMIT' TO EARN 100 POINTS!",
     ];
     console.log("inside opnmodel");
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "2") {
-        twitterReward();
-      }
-    });
-    function twitterReward() {
-      const buttons = document.querySelectorAll(
-        ".ButtonRed__inner__2GkGv span"
-      );
-      for (let button of buttons) {
-        console.log(button.innerText);
-        if (
-          button.innerText
-            .toLowerCase()
-            .includes("3000 Elite Points".toLowerCase())
-        ) {
-          console.log(button, "pressed");
-          button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-        }
-      }
-    }
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "1") {
-        runMyFunction();
-      }
-    });
-
-    function runMyFunction() {
-      console.log("The '1' key was pressed! Running JavaScript...");
-      const buttons = document.querySelectorAll(
-        ".ButtonRed__inner__2GkGv span"
-      );
-      for (let button of buttons) {
-        console.log(button.innerText);
-        if (
-          button.innerText.toLowerCase().includes("+20 POINTS".toLowerCase()) ||
-          button.innerText.toLowerCase().includes("+10 POINTS".toLowerCase())
-        ) {
-          console.log(button, "pressed");
-          button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-        }
-      }
-    }
 
     const buttons = document.querySelectorAll(".ButtonRed__inner__2GkGv span");
     for (let button of buttons) {
@@ -182,7 +183,7 @@ setTimeout(() => {
   }
 
   if (window.location.href.includes("activity")) {
-    openBirthdayModel();
+    // openBirthdayModel();
     console.log("go to oberser 1");
 
     // Observer for modal appearance
