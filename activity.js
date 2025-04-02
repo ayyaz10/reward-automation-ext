@@ -47,6 +47,27 @@ setTimeout(() => {
     ];
     console.log("inside opnmodel");
     document.addEventListener("keydown", function (event) {
+      if (event.key === "2") {
+        twitterReward();
+      }
+    });
+    function twitterReward() {
+      const buttons = document.querySelectorAll(
+        ".ButtonRed__inner__2GkGv span"
+      );
+      for (let button of buttons) {
+        console.log(button.innerText);
+        if (
+          button.innerText
+            .toLowerCase()
+            .includes("3000 Elite Points".toLowerCase())
+        ) {
+          console.log(button, "pressed");
+          button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+        }
+      }
+    }
+    document.addEventListener("keydown", function (event) {
       if (event.key === "1") {
         runMyFunction();
       }
