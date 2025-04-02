@@ -11,7 +11,6 @@
       ],
       "js": ["rog.js"]
     },
-
     {
       "matches": [
         "https://rog.asus.com/*/elite/activity/all",
@@ -39,6 +38,15 @@
       "run_at": "document_start"
     },
     {
+      "matches": ["<all_urls>"],
+      "js": ["puterAiScript.js"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["meaningAi.js"]
+    },
+    {
       "matches": [
         "https://account.asus.com/overview.aspx",
         "https://account.asus.com/info.aspx",
@@ -53,6 +61,7 @@
   "background": {
     "service_worker": "background.js"
   },
+
   "permissions": [
     "storage",
     "alarms",
@@ -71,9 +80,14 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["focuslist-logo.png"],
+      "resources": ["focuslist-logo.png", "meaningAi.js"],
       "matches": ["*://*/*"],
       "use_dynamic_url": false
     }
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+
+  "host_permissions": ["http://localhost:5000/"]
 }

@@ -38,7 +38,8 @@ window.onload = function () {
       let day = today.getDate();
       let month = today.getMonth() + 1;
       const birthElements = document.querySelectorAll(
-        "ul.Select__selectDropdown__sEMI7"
+        // "ul.Select__selectDropdown__sEMI7"
+        "ul.Select__selectDropdown__jSonb"
       );
       // set year
       if (birthElements[0]) {
@@ -68,7 +69,8 @@ window.onload = function () {
     }
     function setAgreement() {
       // document.querySelector(".Agreement2__checkmark__28Cct").click();
-      document.querySelector(".Agreement2__checkmark__26hzW").click();
+      // document.querySelector(".Agreement2__checkmark__26hzW").click();
+      document.querySelector(".Agreement2__checkmark__28Cct").click();
     }
     function setCountry() {
       const input = document.createElement("input");
