@@ -46,6 +46,28 @@ setTimeout(() => {
       "HAPPY BIRTHDAY! PLEASE CLICK 'SUBMIT' TO EARN 100 POINTS!",
     ];
     console.log("inside opnmodel");
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "1") {
+        runMyFunction();
+      }
+    });
+
+    function runMyFunction() {
+      console.log("The '1' key was pressed! Running JavaScript...");
+      const buttons = document.querySelectorAll(
+        ".ButtonRed__inner__2GkGv span"
+      );
+      for (let button of buttons) {
+        console.log(button.innerText);
+        if (
+          button.innerText.toLowerCase().includes("+20 POINTS".toLowerCase()) ||
+          button.innerText.toLowerCase().includes("+10 POINTS".toLowerCase())
+        ) {
+          console.log(button, "pressed");
+          button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+        }
+      }
+    }
 
     const buttons = document.querySelectorAll(".ButtonRed__inner__2GkGv span");
     for (let button of buttons) {
@@ -187,6 +209,23 @@ setTimeout(() => {
                   if (mode === "n2-quiz-with-logout") {
                     closeButton.click();
                     solveAndCollectQuiz();
+                  } else if (mode === "xreward-with-logout") {
+                    console.log("inside xrewrad-with-ogout");
+                    const buttons = document.querySelectorAll(
+                      ".ButtonRed__inner__2GkGv span"
+                    );
+                    for (let button of buttons) {
+                      console.log(button.innerText);
+                      if (
+                        button.innerText
+                          .toLowerCase()
+                          .includes("3000 Elite Points")
+                      ) {
+                        button.dispatchEvent(
+                          new MouseEvent("click", { bubbles: true })
+                        );
+                      }
+                    }
                   } else {
                     setTimeout(() => {
                       localStorage.setItem("reward_collected", "true");

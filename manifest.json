@@ -43,10 +43,6 @@
       "run_at": "document_start"
     },
     {
-      "matches": ["<all_urls>"],
-      "js": ["meaningAi.js"]
-    },
-    {
       "matches": [
         "https://account.asus.com/overview.aspx",
         "https://account.asus.com/info.aspx",
